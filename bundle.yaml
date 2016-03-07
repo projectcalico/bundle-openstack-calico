@@ -1,158 +1,200 @@
-envExport:
-  services:
-    cinder:
-      charm: "cs:trusty/cinder-32"
-      num_units: 1
-      annotations:
-        "gui-x": "0"
-        "gui-y": "500"
-      options:
-        "openstack-origin": "cloud:trusty-kilo"
-    "neutron-calico":
-      charm: "cs:~project-calico/trusty/neutron-calico-8"
-      num_units: 0
-      annotations:
-        "gui-x": "500"
-        "gui-y": "500"
-      options:
-        "openstack-origin": "cloud:trusty-kilo"
-    mysql:
-      charm: "cs:trusty/mysql-31"
-      num_units: 1
-      annotations:
-        "gui-x": "250"
-        "gui-y": "0"
-    "rabbitmq-server":
-      charm: "cs:trusty/rabbitmq-server-42"
-      num_units: 1
-      annotations:
-        "gui-x": "250"
-        "gui-y": "500"
-    keystone:
-      charm: "cs:trusty/keystone-31"
-      num_units: 1
-      annotations:
-        "gui-x": "500"
-        "gui-y": "250"
-      options:
-        "admin-password": "openstack"
-        "openstack-origin": "cloud:trusty-kilo"
-    glance:
-      charm: "cs:trusty/glance-28"
-      num_units: 1
-      annotations:
-        "gui-x": "0"
-        "gui-y": "0"
-      to:
-        - "rabbitmq-server=0"
-      options:
-        "openstack-origin": "cloud:trusty-kilo"
-    "openstack-dashboard":
-      charm: "cs:trusty/openstack-dashboard-19"
-      num_units: 1
-      options:
-        "ubuntu-theme": "no"
-        "openstack-origin": "cloud:trusty-kilo"
-      annotations:
-        "gui-x": "750"
-        "gui-y": "0"
-      to:
-        - "rabbitmq-server=0"
-    etcd:
-      charm: "cs:trusty/etcd-3"
-      num_units: 1
-      annotations:
-        "gui-x": "750"
-        "gui-y": "250"
-    bird:
-      charm: "cs:~project-calico/trusty/bird-2"
-      num_units: 1
-      annotations:
-        "gui-x": "750"
-        "gui-y": "500"
-      to:
-        - "rabbitmq-server=0"
-    "nova-cloud-controller":
-      branch: "lp:~openstack-charmers/charms/trusty/nova-cloud-controller/next"
-      num_units: 1
-      options:
-        "network-manager": Neutron
-        "openstack-origin": "cloud:trusty-kilo"
-      annotations:
-        "gui-x": "250"
-        "gui-y": "250"
-    "neutron-api":
-      charm: "cs:~landscape/trusty/neutron-api-21"
-      num_units: 1
-      options:
-        "neutron-plugin": Calico
-        "neutron-security-groups": true
-        "openstack-origin": "cloud:trusty-kilo"
-      annotations:
-        "gui-x": "500"
-        "gui-y": "0"
-    "nova-compute":
-      branch: "lp:~gnuoy/charms/trusty/nova-compute/1515570"
-      num_units: 2
-      annotations:
-        "gui-x": "0"
-        "gui-y": "250"
-      options:
-        "openstack-origin": "cloud:trusty-kilo"
-  relations:
-    - - "nova-cloud-controller:image-service"
-      - "glance:image-service"
-    - - "neutron-calico:etcd-proxy"
-      - "etcd:proxy"
-    - - "neutron-api:etcd-proxy"
-      - "etcd:proxy"
-    - - "neutron-calico:amqp"
-      - "rabbitmq-server:amqp"
-    - - "neutron-calico:neutron-plugin-api"
-      - "neutron-api:neutron-plugin-api"
-    - - "openstack-dashboard:identity-service"
-      - "keystone:identity-service"
-    - - "neutron-calico:neutron-plugin"
-      - "nova-compute:neutron-plugin"
-    - - "nova-compute:cloud-compute"
-      - "nova-cloud-controller:cloud-compute"
-    - - "nova-compute:amqp"
-      - "rabbitmq-server:amqp"
-    - - "nova-cloud-controller:identity-service"
-      - "keystone:identity-service"
-    - - "cinder:cinder-volume-service"
-      - "nova-cloud-controller:cinder-volume-service"
-    - - "cinder:amqp"
-      - "rabbitmq-server:amqp"
-    - - "glance:image-service"
-      - "cinder:image-service"
-    - - "neutron-api:neutron-api"
-      - "nova-cloud-controller:neutron-api"
-    - - "neutron-api:amqp"
-      - "rabbitmq-server:amqp"
-    - - "neutron-calico:bgp-route-reflector"
-      - "bird:bgp-route-reflector"
-    - - "nova-cloud-controller:shared-db"
-      - "mysql:shared-db"
-    - - "nova-cloud-controller:amqp"
-      - "rabbitmq-server:amqp"
-    - - "nova-compute:image-service"
-      - "glance:image-service"
-    - - "glance:identity-service"
-      - "keystone:identity-service"
-    - - "mysql:shared-db"
-      - "keystone:shared-db"
-    - - "nova-compute:shared-db"
-      - "mysql:shared-db"
-    - - "glance:shared-db"
-      - "mysql:shared-db"
-    - - "mysql:shared-db"
-      - "cinder:shared-db"
-    - - "cinder:identity-service"
-      - "keystone:identity-service"
-    - - "neutron-api:shared-db"
-      - "mysql:shared-db"
-    - - "neutron-api:identity-service"
-      - "keystone:identity-service"
-  series: trusty
-
+series: trusty
+services:
+  cinder:
+    charm: "cs:trusty/cinder-77"
+    num_units: 1
+    options:
+      "openstack-origin": "cloud:trusty-liberty"
+    annotations:
+      "gui-x": "2870"
+      "gui-y": "78.5"
+    to:
+      - "0"
+  etcd:
+    charm: "cs:trusty/etcd-6"
+    num_units: 1
+    annotations:
+      "gui-x": "182"
+      "gui-y": "-586"
+    to:
+      - "1"
+  keystone:
+    charm: "cs:trusty/keystone-78"
+    num_units: 1
+    options:
+      "admin-password": openstack
+      "openstack-origin": "cloud:trusty-liberty"
+    annotations:
+      "gui-x": "3336"
+      "gui-y": "358"
+    to:
+      - "2"
+  mysql:
+    charm: "cs:trusty/mysql-36"
+    num_units: 1
+    annotations:
+      "gui-x": "2301"
+      "gui-y": "401.5"
+    to:
+      - "3"
+  "neutron-api":
+    charm: "cs:~openstack-charmers-next/trusty/neutron-api-58"
+    num_units: 1
+    options:
+      "neutron-plugin": Calico
+      "neutron-security-groups": true
+      "openstack-origin": "cloud:trusty-liberty"
+    annotations:
+      "gui-x": "2356"
+      "gui-y": "-831.5"
+    to:
+      - "4"
+  "neutron-calico":
+    charm: "cs:~project-calico/trusty/neutron-calico-9"
+    options:
+      "openstack-origin": "cloud:trusty-liberty"
+    annotations:
+      "gui-x": "549.5665283203125"
+      "gui-y": "804.588134765625"
+  "nova-cloud-controller":
+    charm: "cs:trusty/nova-cloud-controller-109"
+    num_units: 1
+    options:
+      "network-manager": Neutron
+      "openstack-origin": "cloud:trusty-liberty"
+    annotations:
+      "gui-x": "2931"
+      "gui-y": "907.5"
+    to:
+      - "5"
+  "nova-compute":
+    charm: "cs:trusty/nova-compute-79"
+    num_units: 2
+    options:
+      "openstack-origin": "cloud:trusty-liberty"
+    annotations:
+      "gui-x": "1042"
+      "gui-y": "1254.5"
+    to:
+      - "6"
+      - "7"
+  "rabbitmq-server":
+    charm: "cs:trusty/rabbitmq-server-43"
+    num_units: 1
+    annotations:
+      "gui-x": "1749"
+      "gui-y": "325.5"
+    to:
+      - "8"
+  bird:
+    charm: "cs:trusty/bird-1"
+    num_units: 1
+    annotations:
+      "gui-x": "84"
+      "gui-y": "712.5"
+    to:
+      - "8"
+  glance:
+    charm: "cs:trusty/glance-74"
+    num_units: 1
+    options:
+      "openstack-origin": "cloud:trusty-liberty"
+    annotations:
+      "gui-x": "2099"
+      "gui-y": "1267.5"
+    to:
+      - "8"
+  "openstack-dashboard":
+    charm: "cs:trusty/openstack-dashboard-64"
+    num_units: 1
+    options:
+      "openstack-origin": "cloud:trusty-liberty"
+      "ubuntu-theme": "no"
+    annotations:
+      "gui-x": "3606"
+      "gui-y": "-621.5"
+    to:
+      - "8"
+relations:
+  - - "nova-cloud-controller:image-service"
+    - "glance:image-service"
+  - - "neutron-calico:etcd-proxy"
+    - "etcd:proxy"
+  - - "neutron-api:etcd-proxy"
+    - "etcd:proxy"
+  - - "neutron-calico:amqp"
+    - "rabbitmq-server:amqp"
+  - - "neutron-calico:neutron-plugin-api"
+    - "neutron-api:neutron-plugin-api"
+  - - "openstack-dashboard:identity-service"
+    - "keystone:identity-service"
+  - - "neutron-calico:neutron-plugin"
+    - "nova-compute:neutron-plugin"
+  - - "nova-compute:cloud-compute"
+    - "nova-cloud-controller:cloud-compute"
+  - - "nova-compute:amqp"
+    - "rabbitmq-server:amqp"
+  - - "nova-cloud-controller:identity-service"
+    - "keystone:identity-service"
+  - - "cinder:cinder-volume-service"
+    - "nova-cloud-controller:cinder-volume-service"
+  - - "cinder:amqp"
+    - "rabbitmq-server:amqp"
+  - - "glance:image-service"
+    - "cinder:image-service"
+  - - "neutron-api:neutron-api"
+    - "nova-cloud-controller:neutron-api"
+  - - "neutron-api:amqp"
+    - "rabbitmq-server:amqp"
+  - - "neutron-calico:bgp-route-reflector"
+    - "bird:bgp-route-reflector"
+  - - "nova-cloud-controller:shared-db"
+    - "mysql:shared-db"
+  - - "nova-cloud-controller:amqp"
+    - "rabbitmq-server:amqp"
+  - - "nova-compute:image-service"
+    - "glance:image-service"
+  - - "glance:identity-service"
+    - "keystone:identity-service"
+  - - "mysql:shared-db"
+    - "keystone:shared-db"
+  - - "nova-compute:shared-db"
+    - "mysql:shared-db"
+  - - "glance:shared-db"
+    - "mysql:shared-db"
+  - - "mysql:shared-db"
+    - "cinder:shared-db"
+  - - "cinder:identity-service"
+    - "keystone:identity-service"
+  - - "neutron-api:shared-db"
+    - "mysql:shared-db"
+  - - "neutron-api:identity-service"
+    - "keystone:identity-service"
+machines:
+  "0":
+    series: trusty
+    constraints: "arch=amd64"
+  "1":
+    series: trusty
+    constraints: "arch=amd64"
+  "2":
+    series: trusty
+    constraints: "arch=amd64"
+  "3":
+    series: trusty
+    constraints: "arch=amd64"
+  "4":
+    series: trusty
+    constraints: "arch=amd64"
+  "5":
+    series: trusty
+    constraints: "arch=amd64"
+  "6":
+    series: trusty
+    constraints: "arch=amd64"
+  "7":
+    series: trusty
+    constraints: "arch=amd64"
+  "8":
+    series: trusty
+    constraints: "arch=amd64"
