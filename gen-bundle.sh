@@ -135,7 +135,9 @@ cat <<EOF
       "gui-x": "0"
       "gui-y": "250"
     options:
+      "cpu-mode": "none"
       "openstack-origin": "cloud:trusty-${openstack_release}"
+      "virt-type": "qemu"
   "openstack-dashboard":
     charm: "cs:trusty/openstack-dashboard"
     num_units: 1
