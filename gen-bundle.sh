@@ -43,6 +43,14 @@ esac
 # Generate bundle.
 cat <<EOF
   services:
+    bird:
+      charm: "cs:trusty/bird"
+      num_units: 1
+      annotations:
+        "gui-x": "750"
+        "gui-y": "500"
+      to:
+        - "rabbitmq-server=0"
     cinder:
       charm: "cs:trusty/cinder"
       num_units: 1
@@ -51,42 +59,12 @@ cat <<EOF
         "gui-y": "500"
       options:
         "openstack-origin": "cloud:trusty-${openstack_release}"
-    "neutron-calico":
-      charm: "cs:~project-calico/trusty/neutron-calico"
-      num_units: 0
-      annotations:
-        "gui-x": "500"
-        "gui-y": "500"
-      options:
-EOF
-
-[ -n "${calico_origin}" ] && cat <<EOF
-        "calico-origin": "${calico_origin}"
-EOF
-
-cat <<EOF
-        "openstack-origin": "cloud:trusty-${openstack_release}"
-    mysql:
-      charm: "cs:trusty/mysql"
+    etcd:
+      charm: "cs:trusty/etcd"
       num_units: 1
       annotations:
-        "gui-x": "250"
-        "gui-y": "0"
-    "rabbitmq-server":
-      charm: "cs:trusty/rabbitmq-server"
-      num_units: 1
-      annotations:
-        "gui-x": "250"
-        "gui-y": "500"
-    keystone:
-      charm: "cs:trusty/keystone"
-      num_units: 1
-      annotations:
-        "gui-x": "500"
+        "gui-x": "750"
         "gui-y": "250"
-      options:
-        "admin-password": "openstack"
-        "openstack-origin": "cloud:trusty-${openstack_release}"
     glance:
       charm: "cs:trusty/glance"
       num_units: 1
@@ -97,40 +75,21 @@ cat <<EOF
         - "rabbitmq-server=0"
       options:
         "openstack-origin": "cloud:trusty-${openstack_release}"
-    "openstack-dashboard":
-      charm: "cs:trusty/openstack-dashboard"
-      num_units: 1
-      options:
-        "ubuntu-theme": "no"
-        "openstack-origin": "cloud:trusty-${openstack_release}"
-      annotations:
-        "gui-x": "750"
-        "gui-y": "0"
-      to:
-        - "rabbitmq-server=0"
-    etcd:
-      charm: "cs:trusty/etcd"
+    keystone:
+      charm: "cs:trusty/keystone"
       num_units: 1
       annotations:
-        "gui-x": "750"
+        "gui-x": "500"
         "gui-y": "250"
-    bird:
-      charm: "cs:trusty/bird"
-      num_units: 1
-      annotations:
-        "gui-x": "750"
-        "gui-y": "500"
-      to:
-        - "rabbitmq-server=0"
-    "nova-cloud-controller":
-      charm: "cs:trusty/nova-cloud-controller"
-      num_units: 1
       options:
-        "network-manager": Neutron
+        "admin-password": "openstack"
         "openstack-origin": "cloud:trusty-${openstack_release}"
+    mysql:
+      charm: "cs:trusty/mysql"
+      num_units: 1
       annotations:
         "gui-x": "250"
-        "gui-y": "250"
+        "gui-y": "0"
     "neutron-api":
       charm: "cs:~openstack-charmers-next/trusty/neutron-api"
       num_units: 1
@@ -148,6 +107,30 @@ cat <<EOF
       annotations:
         "gui-x": "500"
         "gui-y": "0"
+    "neutron-calico":
+      charm: "cs:~project-calico/trusty/neutron-calico"
+      num_units: 0
+      annotations:
+        "gui-x": "500"
+        "gui-y": "500"
+      options:
+EOF
+
+[ -n "${calico_origin}" ] && cat <<EOF
+        "calico-origin": "${calico_origin}"
+EOF
+
+cat <<EOF
+        "openstack-origin": "cloud:trusty-${openstack_release}"
+    "nova-cloud-controller":
+      charm: "cs:trusty/nova-cloud-controller"
+      num_units: 1
+      options:
+        "network-manager": Neutron
+        "openstack-origin": "cloud:trusty-${openstack_release}"
+      annotations:
+        "gui-x": "250"
+        "gui-y": "250"
     "nova-compute":
       charm: "cs:trusty/nova-compute"
       num_units: 2
@@ -156,6 +139,23 @@ cat <<EOF
         "gui-y": "250"
       options:
         "openstack-origin": "cloud:trusty-${openstack_release}"
+    "openstack-dashboard":
+      charm: "cs:trusty/openstack-dashboard"
+      num_units: 1
+      options:
+        "ubuntu-theme": "no"
+        "openstack-origin": "cloud:trusty-${openstack_release}"
+      annotations:
+        "gui-x": "750"
+        "gui-y": "0"
+      to:
+        - "rabbitmq-server=0"
+    "rabbitmq-server":
+      charm: "cs:trusty/rabbitmq-server"
+      num_units: 1
+      annotations:
+        "gui-x": "250"
+        "gui-y": "500"
   relations:
     - - "nova-cloud-controller:image-service"
       - "glance:image-service"

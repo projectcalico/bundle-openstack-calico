@@ -1,5 +1,33 @@
 series: xenial
 services:
+  bird:
+    charm: "cs:~project-calico/xenial/bird"
+    # ------------------------------------------------------------
+    # Project Calico Launchpad branch at
+    # lp:~project-calico/charms/xenial/bird/trunk contains the following
+    # proposed changes, starting from lp:charms/trusty/bird.
+    #
+    # revno: 16
+    # committer: Neil Jerram <Neil.Jerram@metaswitch.com>
+    # branch nick: trunk
+    # timestamp: Tue 2016-04-05 13:57:08 +0100
+    # message:
+    #   Adapt service_running condition for systemd
+    #
+    #   An alternative would be to sync with the latest charmhelpers, which appears to
+    #   have full systemd support.
+    #
+    # revno: 15
+    # committer: Neil Jerram <Neil.Jerram@metaswitch.com>
+    # branch nick: trunk
+    # timestamp: Tue 2016-03-29 10:39:09 +0100
+    # message:
+    #   Add shell script install wrapper
+    # ------------------------------------------------------------
+    num_units: 1
+    annotations:
+      "gui-x": "84"
+      "gui-y": "712.5"
   cinder:
     charm: "cs:~openstack-charmers-next/xenial/cinder"
     num_units: 1
@@ -76,6 +104,15 @@ services:
     annotations:
       "gui-x": "182"
       "gui-y": "-586"
+  glance:
+    charm: "cs:~openstack-charmers-next/xenial/glance"
+    num_units: 1
+    options:
+      "openstack-origin": "cloud:xenial-mitaka"
+    annotations:
+      "gui-x": "2099"
+      "gui-y": "1267.5"
+    to: [ bird ]
   keystone:
     charm: "cs:~openstack-charmers-next/xenial/keystone"
     num_units: 1
@@ -145,50 +182,6 @@ services:
     annotations:
       "gui-x": "1042"
       "gui-y": "1254.5"
-  "rabbitmq-server":
-    charm: "cs:~openstack-charmers-next/xenial/rabbitmq-server"
-    num_units: 1
-    annotations:
-      "gui-x": "1749"
-      "gui-y": "325.5"
-    to: [ bird ]
-  bird:
-    charm: "cs:~project-calico/xenial/bird"
-    # ------------------------------------------------------------
-    # Project Calico Launchpad branch at
-    # lp:~project-calico/charms/xenial/bird/trunk contains the following
-    # proposed changes, starting from lp:charms/trusty/bird.
-    #
-    # revno: 16
-    # committer: Neil Jerram <Neil.Jerram@metaswitch.com>
-    # branch nick: trunk
-    # timestamp: Tue 2016-04-05 13:57:08 +0100
-    # message:
-    #   Adapt service_running condition for systemd
-    #
-    #   An alternative would be to sync with the latest charmhelpers, which appears to
-    #   have full systemd support.
-    #
-    # revno: 15
-    # committer: Neil Jerram <Neil.Jerram@metaswitch.com>
-    # branch nick: trunk
-    # timestamp: Tue 2016-03-29 10:39:09 +0100
-    # message:
-    #   Add shell script install wrapper
-    # ------------------------------------------------------------
-    num_units: 1
-    annotations:
-      "gui-x": "84"
-      "gui-y": "712.5"
-  glance:
-    charm: "cs:~openstack-charmers-next/xenial/glance"
-    num_units: 1
-    options:
-      "openstack-origin": "cloud:xenial-mitaka"
-    annotations:
-      "gui-x": "2099"
-      "gui-y": "1267.5"
-    to: [ bird ]
   "openstack-dashboard":
     charm: "cs:~neil-jerram/xenial/openstack-dashboard-0"
     # ------------------------------------------------------------
@@ -205,6 +198,13 @@ services:
     annotations:
       "gui-x": "3606"
       "gui-y": "-621.5"
+    to: [ bird ]
+  "rabbitmq-server":
+    charm: "cs:~openstack-charmers-next/xenial/rabbitmq-server"
+    num_units: 1
+    annotations:
+      "gui-x": "1749"
+      "gui-y": "325.5"
     to: [ bird ]
 relations:
   - - "nova-cloud-controller:image-service"
