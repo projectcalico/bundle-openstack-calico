@@ -42,7 +42,6 @@ esac
 
 # Generate bundle.
 cat <<EOF
-envExport:
   services:
     cinder:
       charm: "cs:trusty/cinder"
