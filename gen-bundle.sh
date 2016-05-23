@@ -49,8 +49,6 @@ services:
     annotations:
       "gui-x": "750"
       "gui-y": "500"
-    to:
-      - "rabbitmq-server=0"
   cinder:
     charm: "cs:trusty/cinder"
     num_units: 1
@@ -71,8 +69,7 @@ services:
     annotations:
       "gui-x": "0"
       "gui-y": "0"
-    to:
-      - "rabbitmq-server=0"
+    to: [ bird ]
     options:
       "openstack-origin": "cloud:trusty-${openstack_release}"
   keystone:
@@ -148,14 +145,14 @@ cat <<EOF
     annotations:
       "gui-x": "750"
       "gui-y": "0"
-    to:
-      - "rabbitmq-server=0"
+    to: [ bird ]
   "rabbitmq-server":
     charm: "cs:trusty/rabbitmq-server"
     num_units: 1
     annotations:
       "gui-x": "250"
       "gui-y": "500"
+    to: [ bird ]
 relations:
   - - "nova-cloud-controller:image-service"
     - "glance:image-service"
