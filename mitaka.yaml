@@ -150,7 +150,7 @@ services:
       "gui-x": "2356"
       "gui-y": "-831.5"
   "neutron-calico":
-    charm: "cs:~project-calico/xenial/neutron-calico"
+    charm: cs:~neil-jerram/charm-neutron-calico-0
     # ------------------------------------------------------------
     # This is the charm that installs Calico-specific components on each
     # OpenStack compute node.  Source is currently in Launchpad at
