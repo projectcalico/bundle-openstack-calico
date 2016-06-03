@@ -1,28 +1,9 @@
 series: xenial
 services:
   bird:
-    charm: "cs:~project-calico/xenial/bird"
+    charm: "cs:~neil-jerram/bird-0"
     # ------------------------------------------------------------
-    # Project Calico Launchpad branch at
-    # lp:~project-calico/charms/xenial/bird/trunk contains the following
-    # proposed changes, starting from lp:charms/trusty/bird.
-    #
-    # revno: 16
-    # committer: Neil Jerram <Neil.Jerram@metaswitch.com>
-    # branch nick: trunk
-    # timestamp: Tue 2016-04-05 13:57:08 +0100
-    # message:
-    #   Adapt service_running condition for systemd
-    #
-    #   An alternative would be to sync with the latest charmhelpers, which appears to
-    #   have full systemd support.
-    #
-    # revno: 15
-    # committer: Neil Jerram <Neil.Jerram@metaswitch.com>
-    # branch nick: trunk
-    # timestamp: Tue 2016-03-29 10:39:09 +0100
-    # message:
-    #   Add shell script install wrapper
+    # Source: https://github.com/projectcalico/charm-bird
     # ------------------------------------------------------------
     num_units: 1
     annotations:
