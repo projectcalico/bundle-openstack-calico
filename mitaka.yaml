@@ -123,7 +123,7 @@ services:
       "gui-x": "3336"
       "gui-y": "358"
   mysql:
-    charm: "cs:mysql"
+    charm: "cs:trusty/mysql"
     # ------------------------------------------------------------
     # Note: Although this charm path indicates Trusty, the charm code works for
     # Xenial too.
