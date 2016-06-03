@@ -51,12 +51,9 @@ services:
       "gui-x": "2301"
       "gui-y": "401.5"
   "neutron-api":
-    charm: "cs:~neil-jerram/xenial/neutron-api-0"
+    charm: "cs:~neil-jerram/neutron-api-3"
     # ------------------------------------------------------------
-    # Project Calico fork at
-    # http://github.com/projectcalico/charm-neutron-api;calico-xenial adds 1
-    # proposed change:
-    # - https://review.openstack.org/#/c/304478/
+    # Source: https://github.com/projectcalico/charm-neutron-api
     # ------------------------------------------------------------
     num_units: 1
     options:
