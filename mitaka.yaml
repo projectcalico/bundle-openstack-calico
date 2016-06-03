@@ -18,68 +18,9 @@ services:
       "gui-x": "2870"
       "gui-y": "78.5"
   etcd:
-    charm: "cs:~project-calico/xenial/etcd"
+    charm: "cs:~neil-jerram/etcd-0"
     # ------------------------------------------------------------
-    # Project Calico Launchpad branch at
-    # lp:~project-calico/charms/xenial/etcd/trunk contains the following
-    # proposed changes, starting from lp:charms/trusty/etcd.
-    #
-    # revno: 28
-    # committer: Neil Jerram <Neil.Jerram@metaswitch.com>
-    # branch nick: trunk
-    # timestamp: Tue 2016-04-05 16:23:33 +0100
-    # message:
-    #   Fix etcd server install and config
-    #
-    #   - Install etcd package upfront from shell instead of python.
-    #   - Reset etcd state when restarting it after installing new config.
-    #   - Set ETCD_ADVERTISE_PEER_URLS as well as ETCD_INITIAL_ADVERTISE_PEER_URLS.
-    #
-    # revno: 27
-    # committer: Neil Jerram <Neil.Jerram@metaswitch.com>
-    # branch nick: trunk
-    # timestamp: Tue 2016-04-05 16:22:47 +0100
-    # message:
-    #   Fix etcd server install and config
-    #
-    #   - Install etcd package upfront from shell instead of python.
-    #   - Reset etcd state when restarting it after installing new config.
-    #   - Set ETCD_ADVERTISE_PEER_URLS as well as ETCD_INITIAL_ADVERTISE_PEER_URLS.
-    #
-    # revno: 26
-    # committer: Neil Jerram <Neil.Jerram@metaswitch.com>
-    # branch nick: trunk
-    # timestamp: Mon 2016-04-04 18:14:10 +0100
-    # message:
-    #   Adapt config for systemd init
-    #
-    # revno: 25
-    # committer: Neil Jerram <Neil.Jerram@metaswitch.com>
-    # branch nick: trunk
-    # timestamp: Mon 2016-04-04 16:00:28 +0100
-    # message:
-    #   Fix 'DEPRECIATED' typos
-    #
-    # revno: 24
-    # committer: Neil Jerram <Neil.Jerram@metaswitch.com>
-    # branch nick: trunk
-    # timestamp: Tue 2016-03-29 11:33:18 +0100
-    # message:
-    #   Install python-apt
-    #
-    # revno: 23
-    # committer: Neil Jerram <Neil.Jerram@metaswitch.com>
-    # branch nick: trunk
-    # timestamp: Tue 2016-03-29 10:50:40 +0100
-    # message:
-    #   Install python-setuptools
-    #
-    # revno: 22
-    # committer: Neil Jerram <Neil.Jerram@metaswitch.com>
-    # branch nick: etcd
-    # timestamp: Sat 2016-03-26 11:35:43 +0000
-    # message:
-    #   Use apt-get to install pip, instead of easy_install
+    # Source: https://github.com/projectcalico/etcd
     # ------------------------------------------------------------
     num_units: 1
     annotations:
