@@ -95,13 +95,9 @@ services:
       "gui-x": "1042"
       "gui-y": "1254.5"
   "openstack-dashboard":
-    charm: "cs:~neil-jerram/xenial/openstack-dashboard-0"
+    charm: "cs:~neil-jerram/openstack-dashboard-1"
     # ------------------------------------------------------------
-    # Project Calico fork at
-    # http://github.com/projectcalico/charm-openstack-dashboard;calico-xenial
-    # adds 2 changes to Apache configuration (which seem to me to be required
-    # for successful operation).  I haven't yet proposed these on
-    # review.openstack.org.
+    # Source: https://github.com/projectcalico/charm-openstack-dashboard
     # ------------------------------------------------------------
     num_units: 1
     options:
