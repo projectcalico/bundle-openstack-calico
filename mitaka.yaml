@@ -10,7 +10,7 @@ services:
       "gui-x": "84"
       "gui-y": "712.5"
   cinder:
-    charm: "cs:cinder"
+    charm: "cs:xenial/cinder-1"
     # ------------------------------------------------------------
     # https://git.openstack.org/cgit/openstack/charm-cinder
     # ------------------------------------------------------------
@@ -28,7 +28,7 @@ services:
       "gui-x": "182"
       "gui-y": "-586"
   glance:
-    charm: "cs:glance"
+    charm: "cs:xenial/glance-1"
     # ------------------------------------------------------------
     # https://git.openstack.org/cgit/openstack/glance
     # ------------------------------------------------------------
@@ -38,7 +38,7 @@ services:
       "gui-y": "1267.5"
     to: [ bird ]
   keystone:
-    charm: "cs:keystone"
+    charm: "cs:xenial/keystone-1"
     # ------------------------------------------------------------
     # https://git.openstack.org/cgit/openstack/keystone
     # ------------------------------------------------------------
@@ -49,7 +49,7 @@ services:
       "gui-x": "3336"
       "gui-y": "358"
   mysql:
-    charm: "cs:trusty/mysql"
+    charm: "cs:trusty/mysql-38"
     # ------------------------------------------------------------
     # lp:charms/trusty/mysql
     # ------------------------------------------------------------
@@ -81,7 +81,7 @@ services:
       "gui-x": "549.5665283203125"
       "gui-y": "804.588134765625"
   "nova-cloud-controller":
-    charm: "cs:nova-cloud-controller"
+    charm: "cs:xenial/nova-cloud-controller-1"
     # ------------------------------------------------------------
     # https://git.openstack.org/cgit/openstack/charm-nova-cloud-controller
     # ------------------------------------------------------------
@@ -92,7 +92,7 @@ services:
       "gui-x": "2931"
       "gui-y": "907.5"
   "nova-compute":
-    charm: "cs:nova-compute"
+    charm: "cs:xenial/nova-compute-1"
     # ------------------------------------------------------------
     # https://git.openstack.org/cgit/openstack/charm-nova-compute
     # ------------------------------------------------------------
@@ -119,7 +119,7 @@ services:
     # ------------------------------------------------------------
     # https://git.openstack.org/cgit/openstack/charm-rabbitmq-server
     # ------------------------------------------------------------
-    charm: "cs:rabbitmq-server"
+    charm: "cs:xenial/rabbitmq-server-2"
     num_units: 1
     annotations:
       "gui-x": "1749"
