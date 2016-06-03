@@ -3,7 +3,7 @@ services:
   bird:
     charm: "cs:~neil-jerram/bird-0"
     # ------------------------------------------------------------
-    # Source: https://github.com/projectcalico/charm-bird
+    # https://github.com/projectcalico/charm-bird
     # ------------------------------------------------------------
     num_units: 1
     annotations:
@@ -11,6 +11,9 @@ services:
       "gui-y": "712.5"
   cinder:
     charm: "cs:cinder"
+    # ------------------------------------------------------------
+    # https://git.openstack.org/cgit/openstack/charm-cinder
+    # ------------------------------------------------------------
     num_units: 1
     annotations:
       "gui-x": "2870"
@@ -18,7 +21,7 @@ services:
   etcd:
     charm: "cs:~neil-jerram/etcd-0"
     # ------------------------------------------------------------
-    # Source: https://github.com/projectcalico/etcd
+    # https://github.com/projectcalico/etcd
     # ------------------------------------------------------------
     num_units: 1
     annotations:
@@ -26,6 +29,9 @@ services:
       "gui-y": "-586"
   glance:
     charm: "cs:glance"
+    # ------------------------------------------------------------
+    # https://git.openstack.org/cgit/openstack/glance
+    # ------------------------------------------------------------
     num_units: 1
     annotations:
       "gui-x": "2099"
@@ -33,6 +39,9 @@ services:
     to: [ bird ]
   keystone:
     charm: "cs:keystone"
+    # ------------------------------------------------------------
+    # https://git.openstack.org/cgit/openstack/keystone
+    # ------------------------------------------------------------
     num_units: 1
     options:
       "admin-password": openstack
@@ -41,6 +50,9 @@ services:
       "gui-y": "358"
   mysql:
     charm: "cs:trusty/mysql"
+    # ------------------------------------------------------------
+    # lp:charms/trusty/mysql
+    # ------------------------------------------------------------
     num_units: 1
     annotations:
       "gui-x": "2301"
@@ -48,7 +60,7 @@ services:
   "neutron-api":
     charm: "cs:~neil-jerram/neutron-api-3"
     # ------------------------------------------------------------
-    # Source: https://github.com/projectcalico/charm-neutron-api
+    # https://github.com/projectcalico/charm-neutron-api
     # ------------------------------------------------------------
     num_units: 1
     options:
@@ -61,7 +73,7 @@ services:
   "neutron-calico":
     charm: "cs:~neil-jerram/neutron-calico-2"
     # ------------------------------------------------------------
-    # Source: https://github.com/projectcalico/charm-neutron-calico
+    # https://github.com/projectcalico/charm-neutron-calico
     # ------------------------------------------------------------
     options:
       "calico-origin": "ppa:project-calico/unstable"
@@ -70,6 +82,9 @@ services:
       "gui-y": "804.588134765625"
   "nova-cloud-controller":
     charm: "cs:nova-cloud-controller"
+    # ------------------------------------------------------------
+    # https://git.openstack.org/cgit/openstack/charm-nova-cloud-controller
+    # ------------------------------------------------------------
     num_units: 1
     options:
       "network-manager": Neutron
@@ -78,6 +93,9 @@ services:
       "gui-y": "907.5"
   "nova-compute":
     charm: "cs:nova-compute"
+    # ------------------------------------------------------------
+    # https://git.openstack.org/cgit/openstack/charm-nova-compute
+    # ------------------------------------------------------------
     num_units: 2
     options:
       "cpu-mode": "none"
@@ -88,7 +106,7 @@ services:
   "openstack-dashboard":
     charm: "cs:~neil-jerram/openstack-dashboard-1"
     # ------------------------------------------------------------
-    # Source: https://github.com/projectcalico/charm-openstack-dashboard
+    # https://github.com/projectcalico/charm-openstack-dashboard
     # ------------------------------------------------------------
     num_units: 1
     options:
@@ -98,6 +116,9 @@ services:
       "gui-y": "-621.5"
     to: [ bird ]
   "rabbitmq-server":
+    # ------------------------------------------------------------
+    # https://git.openstack.org/cgit/openstack/charm-rabbitmq-server
+    # ------------------------------------------------------------
     charm: "cs:rabbitmq-server"
     num_units: 1
     annotations:
