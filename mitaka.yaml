@@ -12,8 +12,6 @@ services:
   cinder:
     charm: "cs:cinder"
     num_units: 1
-    options:
-      "openstack-origin": "cloud:xenial-mitaka"
     annotations:
       "gui-x": "2870"
       "gui-y": "78.5"
@@ -29,8 +27,6 @@ services:
   glance:
     charm: "cs:glance"
     num_units: 1
-    options:
-      "openstack-origin": "cloud:xenial-mitaka"
     annotations:
       "gui-x": "2099"
       "gui-y": "1267.5"
@@ -40,7 +36,6 @@ services:
     num_units: 1
     options:
       "admin-password": openstack
-      "openstack-origin": "cloud:xenial-mitaka"
     annotations:
       "gui-x": "3336"
       "gui-y": "358"
@@ -60,7 +55,6 @@ services:
       "calico-origin": "ppa:project-calico/unstable"
       "neutron-plugin": Calico
       "neutron-security-groups": true
-      "openstack-origin": "cloud:xenial-mitaka"
     annotations:
       "gui-x": "2356"
       "gui-y": "-831.5"
@@ -71,7 +65,6 @@ services:
     # ------------------------------------------------------------
     options:
       "calico-origin": "ppa:project-calico/unstable"
-      "openstack-origin": "cloud:xenial-mitaka"
     annotations:
       "gui-x": "549.5665283203125"
       "gui-y": "804.588134765625"
@@ -80,7 +73,6 @@ services:
     num_units: 1
     options:
       "network-manager": Neutron
-      "openstack-origin": "cloud:xenial-mitaka"
     annotations:
       "gui-x": "2931"
       "gui-y": "907.5"
@@ -89,7 +81,6 @@ services:
     num_units: 2
     options:
       "cpu-mode": "none"
-      "openstack-origin": "cloud:xenial-mitaka"
       "virt-type": "qemu"
     annotations:
       "gui-x": "1042"
@@ -101,7 +92,6 @@ services:
     # ------------------------------------------------------------
     num_units: 1
     options:
-      "openstack-origin": "cloud:xenial-mitaka"
       "ubuntu-theme": "no"
     annotations:
       "gui-x": "3606"
