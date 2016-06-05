@@ -70,7 +70,7 @@ services:
       "gui-x": "2356"
       "gui-y": "-831.5"
   "neutron-calico":
-    charm: "cs:~neil-jerram/neutron-calico-3"
+    charm: "cs:~neil-jerram/neutron-calico-5"
     # ------------------------------------------------------------
     # https://github.com/projectcalico/charm-neutron-calico
     # ------------------------------------------------------------
