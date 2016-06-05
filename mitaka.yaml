@@ -1,206 +1,122 @@
 series: xenial
 services:
   bird:
-    charm: "cs:~project-calico/xenial/bird"
+    charm: "cs:~neil-jerram/bird-0"
     # ------------------------------------------------------------
-    # Project Calico Launchpad branch at
-    # lp:~project-calico/charms/xenial/bird/trunk contains the following
-    # proposed changes, starting from lp:charms/trusty/bird.
-    #
-    # revno: 16
-    # committer: Neil Jerram <Neil.Jerram@metaswitch.com>
-    # branch nick: trunk
-    # timestamp: Tue 2016-04-05 13:57:08 +0100
-    # message:
-    #   Adapt service_running condition for systemd
-    #
-    #   An alternative would be to sync with the latest charmhelpers, which appears to
-    #   have full systemd support.
-    #
-    # revno: 15
-    # committer: Neil Jerram <Neil.Jerram@metaswitch.com>
-    # branch nick: trunk
-    # timestamp: Tue 2016-03-29 10:39:09 +0100
-    # message:
-    #   Add shell script install wrapper
+    # https://github.com/projectcalico/charm-bird
     # ------------------------------------------------------------
     num_units: 1
     annotations:
       "gui-x": "84"
       "gui-y": "712.5"
   cinder:
-    charm: "cs:~openstack-charmers-next/xenial/cinder"
+    charm: "cs:xenial/cinder-1"
+    # ------------------------------------------------------------
+    # https://git.openstack.org/cgit/openstack/charm-cinder
+    # ------------------------------------------------------------
     num_units: 1
-    options:
-      "openstack-origin": "cloud:xenial-mitaka"
     annotations:
       "gui-x": "2870"
       "gui-y": "78.5"
   etcd:
-    charm: "cs:~project-calico/xenial/etcd"
+    charm: "cs:~neil-jerram/etcd-0"
     # ------------------------------------------------------------
-    # Project Calico Launchpad branch at
-    # lp:~project-calico/charms/xenial/etcd/trunk contains the following
-    # proposed changes, starting from lp:charms/trusty/etcd.
-    #
-    # revno: 28
-    # committer: Neil Jerram <Neil.Jerram@metaswitch.com>
-    # branch nick: trunk
-    # timestamp: Tue 2016-04-05 16:23:33 +0100
-    # message:
-    #   Fix etcd server install and config
-    #
-    #   - Install etcd package upfront from shell instead of python.
-    #   - Reset etcd state when restarting it after installing new config.
-    #   - Set ETCD_ADVERTISE_PEER_URLS as well as ETCD_INITIAL_ADVERTISE_PEER_URLS.
-    #
-    # revno: 27
-    # committer: Neil Jerram <Neil.Jerram@metaswitch.com>
-    # branch nick: trunk
-    # timestamp: Tue 2016-04-05 16:22:47 +0100
-    # message:
-    #   Fix etcd server install and config
-    #
-    #   - Install etcd package upfront from shell instead of python.
-    #   - Reset etcd state when restarting it after installing new config.
-    #   - Set ETCD_ADVERTISE_PEER_URLS as well as ETCD_INITIAL_ADVERTISE_PEER_URLS.
-    #
-    # revno: 26
-    # committer: Neil Jerram <Neil.Jerram@metaswitch.com>
-    # branch nick: trunk
-    # timestamp: Mon 2016-04-04 18:14:10 +0100
-    # message:
-    #   Adapt config for systemd init
-    #
-    # revno: 25
-    # committer: Neil Jerram <Neil.Jerram@metaswitch.com>
-    # branch nick: trunk
-    # timestamp: Mon 2016-04-04 16:00:28 +0100
-    # message:
-    #   Fix 'DEPRECIATED' typos
-    #
-    # revno: 24
-    # committer: Neil Jerram <Neil.Jerram@metaswitch.com>
-    # branch nick: trunk
-    # timestamp: Tue 2016-03-29 11:33:18 +0100
-    # message:
-    #   Install python-apt
-    #
-    # revno: 23
-    # committer: Neil Jerram <Neil.Jerram@metaswitch.com>
-    # branch nick: trunk
-    # timestamp: Tue 2016-03-29 10:50:40 +0100
-    # message:
-    #   Install python-setuptools
-    #
-    # revno: 22
-    # committer: Neil Jerram <Neil.Jerram@metaswitch.com>
-    # branch nick: etcd
-    # timestamp: Sat 2016-03-26 11:35:43 +0000
-    # message:
-    #   Use apt-get to install pip, instead of easy_install
+    # https://github.com/projectcalico/etcd
     # ------------------------------------------------------------
     num_units: 1
     annotations:
       "gui-x": "182"
       "gui-y": "-586"
   glance:
-    charm: "cs:~openstack-charmers-next/xenial/glance"
+    charm: "cs:xenial/glance-1"
+    # ------------------------------------------------------------
+    # https://git.openstack.org/cgit/openstack/glance
+    # ------------------------------------------------------------
     num_units: 1
-    options:
-      "openstack-origin": "cloud:xenial-mitaka"
     annotations:
       "gui-x": "2099"
       "gui-y": "1267.5"
     to: [ bird ]
   keystone:
-    charm: "cs:~openstack-charmers-next/xenial/keystone"
+    charm: "cs:xenial/keystone-1"
+    # ------------------------------------------------------------
+    # https://git.openstack.org/cgit/openstack/keystone
+    # ------------------------------------------------------------
     num_units: 1
     options:
       "admin-password": openstack
-      "openstack-origin": "cloud:xenial-mitaka"
     annotations:
       "gui-x": "3336"
       "gui-y": "358"
   mysql:
-    charm: "cs:trusty/mysql"
+    charm: "cs:trusty/mysql-38"
     # ------------------------------------------------------------
-    # Note: Although this charm path indicates Trusty, the charm code works for
-    # Xenial too.
+    # lp:charms/trusty/mysql
     # ------------------------------------------------------------
     num_units: 1
     annotations:
       "gui-x": "2301"
       "gui-y": "401.5"
   "neutron-api":
-    charm: "cs:~neil-jerram/xenial/neutron-api-0"
+    charm: "cs:~neil-jerram/neutron-api-6"
     # ------------------------------------------------------------
-    # Project Calico fork at
-    # http://github.com/projectcalico/charm-neutron-api;calico-xenial adds 1
-    # proposed change:
-    # - https://review.openstack.org/#/c/304478/
+    # https://github.com/projectcalico/charm-neutron-api
     # ------------------------------------------------------------
     num_units: 1
     options:
-      "calico-origin": "ppa:project-calico/unstable"
       "neutron-plugin": Calico
       "neutron-security-groups": true
-      "openstack-origin": "cloud:xenial-mitaka"
     annotations:
       "gui-x": "2356"
       "gui-y": "-831.5"
   "neutron-calico":
-    charm: cs:~neil-jerram/charm-neutron-calico-0
+    charm: "cs:~neil-jerram/neutron-calico-5"
     # ------------------------------------------------------------
-    # This is the charm that installs Calico-specific components on each
-    # OpenStack compute node.  Source is currently in Launchpad at
-    # lp:~project-calico/charms/xenial/neutron-calico/trunk but it might make
-    # sense to move to a Github source.
+    # https://github.com/projectcalico/charm-neutron-calico
     # ------------------------------------------------------------
-    options:
-      "calico-origin": "ppa:project-calico/unstable"
-      "openstack-origin": "cloud:xenial-mitaka"
     annotations:
       "gui-x": "549.5665283203125"
       "gui-y": "804.588134765625"
   "nova-cloud-controller":
-    charm: "cs:~openstack-charmers-next/xenial/nova-cloud-controller"
+    charm: "cs:xenial/nova-cloud-controller-1"
+    # ------------------------------------------------------------
+    # https://git.openstack.org/cgit/openstack/charm-nova-cloud-controller
+    # ------------------------------------------------------------
     num_units: 1
     options:
       "network-manager": Neutron
-      "openstack-origin": "cloud:xenial-mitaka"
     annotations:
       "gui-x": "2931"
       "gui-y": "907.5"
   "nova-compute":
-    charm: "cs:~openstack-charmers-next/xenial/nova-compute"
+    charm: "cs:xenial/nova-compute-1"
+    # ------------------------------------------------------------
+    # https://git.openstack.org/cgit/openstack/charm-nova-compute
+    # ------------------------------------------------------------
     num_units: 2
     options:
       "cpu-mode": "none"
-      "openstack-origin": "cloud:xenial-mitaka"
       "virt-type": "qemu"
     annotations:
       "gui-x": "1042"
       "gui-y": "1254.5"
   "openstack-dashboard":
-    charm: "cs:~neil-jerram/xenial/openstack-dashboard-0"
+    charm: "cs:~neil-jerram/openstack-dashboard-1"
     # ------------------------------------------------------------
-    # Project Calico fork at
-    # http://github.com/projectcalico/charm-openstack-dashboard;calico-xenial
-    # adds 2 changes to Apache configuration (which seem to me to be required
-    # for successful operation).  I haven't yet proposed these on
-    # review.openstack.org.
+    # https://github.com/projectcalico/charm-openstack-dashboard
     # ------------------------------------------------------------
     num_units: 1
     options:
-      "openstack-origin": "cloud:xenial-mitaka"
       "ubuntu-theme": "no"
     annotations:
       "gui-x": "3606"
       "gui-y": "-621.5"
     to: [ bird ]
   "rabbitmq-server":
-    charm: "cs:~openstack-charmers-next/xenial/rabbitmq-server"
+    # ------------------------------------------------------------
+    # https://git.openstack.org/cgit/openstack/charm-rabbitmq-server
+    # ------------------------------------------------------------
+    charm: "cs:xenial/rabbitmq-server-2"
     num_units: 1
     annotations:
       "gui-x": "1749"
