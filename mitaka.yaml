@@ -1,7 +1,7 @@
 series: xenial
 services:
   bird:
-    charm: "cs:~neil-jerram/bird-0"
+    charm: "cs:~project-calico/bird-5"
     # ------------------------------------------------------------
     # https://github.com/projectcalico/charm-bird
     # ------------------------------------------------------------
@@ -19,7 +19,7 @@ services:
       "gui-x": "2870"
       "gui-y": "78.5"
   etcd:
-    charm: "cs:~neil-jerram/etcd-0"
+    charm: "cs:~project-calico/etcd-8"
     # ------------------------------------------------------------
     # https://github.com/projectcalico/etcd
     # ------------------------------------------------------------
@@ -58,7 +58,7 @@ services:
       "gui-x": "2301"
       "gui-y": "401.5"
   "neutron-api":
-    charm: "cs:~neil-jerram/neutron-api-6"
+    charm: "cs:~project-calico/neutron-api-3"
     # ------------------------------------------------------------
     # https://github.com/projectcalico/charm-neutron-api
     # ------------------------------------------------------------
@@ -70,7 +70,7 @@ services:
       "gui-x": "2356"
       "gui-y": "-831.5"
   "neutron-calico":
-    charm: "cs:~neil-jerram/neutron-calico-5"
+    charm: "cs:~project-calico/neutron-calico-10"
     # ------------------------------------------------------------
     # https://github.com/projectcalico/charm-neutron-calico
     # ------------------------------------------------------------
@@ -101,7 +101,7 @@ services:
       "gui-x": "1042"
       "gui-y": "1254.5"
   "openstack-dashboard":
-    charm: "cs:~neil-jerram/openstack-dashboard-1"
+    charm: "cs:~project-calico/openstack-dashboard-0"
     # ------------------------------------------------------------
     # https://github.com/projectcalico/charm-openstack-dashboard
     # ------------------------------------------------------------
