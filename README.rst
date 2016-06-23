@@ -14,8 +14,8 @@ of:
 
 Specifically we have the following subdirectories:
 
-- mitaka-juju-2: Bundle for Mitaka OpenStack with Calico 1.4 on Xenial nodes
-  (except for MySQL on Trusty), for deployment using Juju 2.
+- calico-mitaka-juju2: Bundle for Mitaka OpenStack with Calico 1.4 on Xenial
+  nodes (except for MySQL on Trusty), for deployment using Juju 2.
 
 - mitaka-juju-1: Bundle for Mitaka OpenStack with Calico 1.4 on Xenial nodes
   (except for MySQL on Trusty), for deployment using Juju 1.
