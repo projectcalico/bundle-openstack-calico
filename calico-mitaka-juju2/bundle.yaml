@@ -19,7 +19,7 @@ services:
       "gui-x": "2870"
       "gui-y": "78.5"
   etcd:
-    charm: "cs:~containers/etcd-4"
+    charm: "cs:~lazypower/etcd-22"
     # ------------------------------------------------------------
     # https://github.com/juju-solutions/layer-etcd
     # ------------------------------------------------------------
