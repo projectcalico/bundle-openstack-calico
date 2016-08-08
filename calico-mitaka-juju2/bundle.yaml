@@ -58,7 +58,7 @@ services:
       "gui-x": "2301"
       "gui-y": "401.5"
   "neutron-api":
-    charm: "cs:~project-calico/neutron-api-6"
+    charm: "cs:~project-calico/neutron-api-7"
     # ------------------------------------------------------------
     # https://github.com/projectcalico/charm-neutron-api
     # ------------------------------------------------------------
@@ -70,7 +70,7 @@ services:
       "gui-x": "2356"
       "gui-y": "-831.5"
   "neutron-calico":
-    charm: "cs:~project-calico/neutron-calico-12"
+    charm: "cs:~project-calico/neutron-calico-13"
     # ------------------------------------------------------------
     # https://github.com/projectcalico/charm-neutron-calico
     # ------------------------------------------------------------
