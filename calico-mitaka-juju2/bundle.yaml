@@ -58,7 +58,7 @@ services:
       "gui-x": "2301"
       "gui-y": "401.5"
   "neutron-api":
-    charm: "cs:~project-calico/neutron-api-9"
+    charm: "cs:~project-calico/neutron-api-10"
     # ------------------------------------------------------------
     # https://github.com/projectcalico/charm-neutron-api
     # ------------------------------------------------------------
@@ -66,14 +66,17 @@ services:
     options:
       "neutron-plugin": Calico
       "neutron-security-groups": true
+      "etcd-package-url": "http://launchpadlibrarian.net/274096873/etcd_2.3.7+dfsg-4_amd64.deb"
     annotations:
       "gui-x": "2356"
       "gui-y": "-831.5"
   "neutron-calico":
-    charm: "cs:~project-calico/neutron-calico-15"
+    charm: "cs:~project-calico/neutron-calico-16"
     # ------------------------------------------------------------
     # https://github.com/projectcalico/charm-neutron-calico
     # ------------------------------------------------------------
+    options:
+      "etcd-package-url": "http://launchpadlibrarian.net/274096873/etcd_2.3.7+dfsg-4_amd64.deb"
     annotations:
       "gui-x": "549.5665283203125"
       "gui-y": "804.588134765625"
