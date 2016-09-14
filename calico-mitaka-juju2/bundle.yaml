@@ -114,7 +114,6 @@ services:
     annotations:
       "gui-x": "3606"
       "gui-y": "-621.5"
-    to: [ bird ]
   "rabbitmq-server":
     # ------------------------------------------------------------
     # https://git.openstack.org/cgit/openstack/charm-rabbitmq-server
