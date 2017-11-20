@@ -96,6 +96,7 @@ services:
     options:
       "openstack-origin": "cloud:xenial-newton"
       "network-manager": Neutron
+      "console-access-protocol": "vnc"
     annotations:
       "gui-x": "2931"
       "gui-y": "907.5"
