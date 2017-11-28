@@ -1,6 +1,6 @@
 # OpenStack Cloud with Calico Networking
 
-This bundle deploys a small OpenStack Cloud (Mitaka release) on Ubuntu 16.04
+This bundle deploys a small OpenStack Cloud (Newton release) on Ubuntu 16.04
 LTS (Xenial) with Layer 3 networking by [Project Calico][], providing
 Dashboard, Compute, Network, Block Storage, Identity and Image services.
 
