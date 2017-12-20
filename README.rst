@@ -8,11 +8,14 @@ of:
 
 - the Ubuntu platform (Trusty or Xenial)
 
-- the OpenStack release (Icehouse, Kilo, Liberty or Mitaka)
+- the OpenStack release (Icehouse, Kilo, Liberty, Mitaka or Newton)
 
 - the Calico code (1.3 or 1.4).
 
 Specifically we have the following subdirectories:
+
+- calico-newton-juju2: Bundle for Newton OpenStack with Calico 1.4 on Xenial
+  nodes (except for MySQL on Trusty), for deployment using Juju 2.
 
 - calico-mitaka-juju2: Bundle for Mitaka OpenStack with Calico 1.4 on Xenial
   nodes (except for MySQL on Trusty), for deployment using Juju 2.
